@@ -1,9 +1,9 @@
-import { Switch } from '@/components/ui/switch';
+import { Header } from '@/components/header';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div>
-      <Switch />
-    </div>
+    <main className="w-full min-w-screen">
+      <Header />
+    </main>
   );
 }
