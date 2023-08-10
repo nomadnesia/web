@@ -32,19 +32,29 @@ function Header() {
 
       return;
     },
-    [searchParams, router],
+    [searchParams, router, pathname],
   );
 
   return (
-    <section className="w-full h-[500px] relative">
-      <Image
-        src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5335b4153214395.632b797ad321d.jpg"
-        alt="Cover"
-        className="z-0"
-        objectFit="cover"
-        layout="fill"
-      />
-      <div className="flex flex-col z-5 absolute w-full h-full items-center justify-center">
+    <section className="w-full h-[400px] relative bg-black">
+      {mode === 'cafe' ? (
+        <Image
+          src={'/header-cafe.jpg'}
+          alt="Cover"
+          className="z-0 opacity-50"
+          objectFit="cover"
+          layout="fill"
+        />
+      ) : (
+        <Image
+          src={'/header-work.jpg'}
+          alt="Cover"
+          className="z-0 opacity-50"
+          objectFit="cover"
+          layout="fill"
+        />
+      )}
+      <div className="flex flex-col z-5 absolute gap-[20px] w-full h-full items-center justify-center">
         <div className="flex gap-[10px]">
           <p
             className={cn('text-white transition', {
@@ -62,11 +72,10 @@ function Header() {
             Cafe
           </p>
         </div>
-
-        <h1 className="text-white font-medium tracking-tight text-[48px]">
+        <h1 className="text-white font-medium tracking-tight leading-tight text-[48px] md:max-w-[800px] text-center">
           {mode === 'job'
             ? 'Cari kerja remote dengan mudah dan nyaman'
-            : 'Cari rekomendasi cafe untuk kerja remote dengan mudah dan nyaman'}
+            : 'Rekomendasi cafe terbaik untuk melakukan kerja remote'}
         </h1>
       </div>
     </section>
