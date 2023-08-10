@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { ModeProvider } from './providers';
+import { ModeProvider, SearchQueryProvider } from '@/providers';
 
 import './globals.css';
 

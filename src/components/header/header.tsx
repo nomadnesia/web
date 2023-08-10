@@ -1,14 +1,14 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { Search } from 'lucide-react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { useMode } from '@/app/providers';
 import { cn } from '@/lib/utils';
+import { useMode, useSearchQuery } from '@/providers';
 
 import { ModeSwitch } from '.';
 
