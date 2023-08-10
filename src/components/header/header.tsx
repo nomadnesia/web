@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
+import { useMode } from '@/app/providers';
 import { cn } from '@/lib/utils';
 
 import { ModeSwitch } from '.';
@@ -15,7 +16,7 @@ function Header() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [mode, setMode] = useState<'job' | 'cafe'>(searchParams?.get('cafe') ? 'cafe' : 'job');
+  const { mode, setMode } = useMode();
   const [query, setQuery] = useState<string | null>(searchParams?.get('q') ?? null);
 
   const changeMode = useCallback(
