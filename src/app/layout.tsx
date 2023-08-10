@@ -16,7 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ModeProvider>{children}</ModeProvider>
+        <ModeProvider>
+          <SearchQueryProvider>{children}</SearchQueryProvider>
+        </ModeProvider>
       </body>
     </html>
   );

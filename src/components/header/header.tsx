@@ -17,7 +17,7 @@ function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const { mode, setMode } = useMode();
-  const [query, setQuery] = useState<string | null>(searchParams?.get('q') ?? null);
+  const { searchQuery, setSearchQuery, onSearchQuery } = useSearchQuery();
 
   const changeMode = useCallback(
     (checked: boolean) => {
@@ -26,7 +26,7 @@ function Header() {
       const params = new URLSearchParams(searchParams.toString());
       /* Clear search query on switch */
       if (searchParams.get('q')) {
-        setQuery(null);
+        setSearchQuery(null);
         params.delete('q');
       }
       /* Enable cafe mode when true */
@@ -49,11 +49,9 @@ function Header() {
   const handleSearch = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const params = new URLSearchParams(searchParams.toString());
-      params.set('q', e.currentTarget.search.value);
-      router.push(pathname + '?' + params);
+      onSearchQuery(e.currentTarget.search.value);
     },
-    [searchParams, router, pathname],
+    [onSearchQuery],
   );
 
   return (
@@ -115,8 +113,7 @@ function Header() {
             type="text"
             id="search"
             name="search"
-            defaultValue={query ?? undefined}
-            value={query ?? undefined}
+            defaultValue={searchQuery ?? undefined}
             placeholder={
               mode === 'job' ? 'Cari software engineer, designer, ...' : 'Cari cafe, restoran, ...'
             }
