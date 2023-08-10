@@ -78,7 +78,7 @@ function Header() {
       <Link
         href="https://www.behance.net/ainaraza994c69"
         target="_blank"
-        className="absolute bottom-2 left-2 z-10 text-[10px] text-white/50"
+        className="absolute bottom-2 left-2 z-10 text-[10px] text-white/50 transition hover:text-white/80"
       >
         Art by Aleena
       </Link>
@@ -105,7 +105,7 @@ function Header() {
         <h1 className="text-white font-medium tracking-tight leading-tight text-[36px] lg:text-[48px] w-full lg:max-w-[800px] md:max-w-[600px] px-[15px] text-center">
           {mode === 'job'
             ? 'Cari kerja remote dengan mudah dan nyaman'
-            : 'Rekomendasi cafe terbaik untuk melakukan kerja remote'}
+            : 'Car cafe terbaik untuk melakukan kerja remote'}
         </h1>
         <form
           onSubmit={handleSearch}
