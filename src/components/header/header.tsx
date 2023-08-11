@@ -7,8 +7,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { cn } from '@/lib/utils';
 import { useMode, useSearchQuery } from '@/providers';
+import { cn } from '@/libs/utils';
 
 import { ModeSwitch } from '.';
 
