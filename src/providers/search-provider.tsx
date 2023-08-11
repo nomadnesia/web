@@ -17,17 +17,17 @@ interface SearchQueryContext {
   onSearchQuery: (query: string) => void;
 }
 
-export const SearchQueryContextImpl = createContext<SearchQueryContext>({
+const SearchQueryContextImpl = createContext<SearchQueryContext>({
   searchQuery: '',
   setSearchQuery: () => {},
   onSearchQuery: () => {},
 });
 
-export function useSearchQuery() {
+function useSearchQuery() {
   return useContext(SearchQueryContextImpl);
 }
 
-export function SearchQueryProvider({ children }: { children: React.ReactNode }) {
+function SearchQueryProvider({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -49,3 +49,5 @@ export function SearchQueryProvider({ children }: { children: React.ReactNode })
     </SearchQueryContextImpl.Provider>
   );
 }
+
+export { SearchQueryProvider, useSearchQuery };

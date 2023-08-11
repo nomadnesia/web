@@ -11,18 +11,19 @@ interface ModeContext {
   setMode: Dispatch<SetStateAction<Mode>>;
 }
 
-export const ModeContextImpl = createContext<ModeContext>({
+const ModeContextImpl = createContext<ModeContext>({
   mode: 'job',
   setMode: () => {},
 });
 
-export function useMode() {
+function useMode() {
   return useContext(ModeContextImpl);
 }
-
-export function ModeProvider({ children }: { children: React.ReactNode }) {
+function ModeProvider({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   const [mode, setMode] = useState<Mode>(searchParams?.get('cafe') ? 'cafe' : 'job');
 
   return <ModeContextImpl.Provider value={{ mode, setMode }}>{children}</ModeContextImpl.Provider>;
 }
+
+export { ModeProvider, useMode };
