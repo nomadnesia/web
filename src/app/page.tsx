@@ -1,9 +1,17 @@
-import { Switch } from '@/components/ui/switch';
+import { Header } from '@/components/header';
+import { List } from '@/components/list';
+import { ModeProvider } from '@/providers/mode-provider';
+import { SearchQueryProvider } from '@/providers/search-provider';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div>
-      <Switch />
-    </div>
+    <ModeProvider>
+      <SearchQueryProvider>
+        <main className="w-full min-w-screen">
+          <Header />
+          <List />
+        </main>
+      </SearchQueryProvider>
+    </ModeProvider>
   );
 }
