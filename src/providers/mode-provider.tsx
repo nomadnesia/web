@@ -1,6 +1,13 @@
 'use client';
 
-import { createContext, type Dispatch, type SetStateAction, useContext, useState } from 'react';
+import {
+  createContext,
+  type Dispatch,
+  type SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 import { useSearchParams } from 'next/navigation';
 
