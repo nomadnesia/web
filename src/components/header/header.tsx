@@ -56,7 +56,7 @@ function Header() {
   );
 
   return (
-    <section className="w-full min-h-[350px] h-fit relative bg-black">
+    <header className="w-full min-h-[350px] h-fit relative bg-black">
       {mode === 'cafe' ? (
         <Image
           src={'/header-cafe.jpg'}
@@ -128,7 +128,7 @@ function Header() {
           </button>
         </form>
       </div>
-    </section>
+    </header>
   );
 }
 
