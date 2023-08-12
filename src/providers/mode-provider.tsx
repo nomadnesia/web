@@ -4,7 +4,7 @@ import { createContext, type Dispatch, type SetStateAction, useContext, useState
 
 import { useSearchParams } from 'next/navigation';
 
-type Mode = 'job' | 'cafe';
+export type Mode = 'job' | 'cafe';
 
 interface ModeContext {
   mode: Mode;
