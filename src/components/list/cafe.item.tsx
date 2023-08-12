@@ -31,4 +31,4 @@ function CafeItem({ cafe }: { cafe: Cafe }) {
   );
 }
 
-export { CafeItem };
+export default CafeItem;

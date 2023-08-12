@@ -15,7 +15,7 @@ function JobItem({ job }: { job: Job }) {
       href={job.url}
       className="p-[15px] group transition hover:bg-black/[0.03] hover:border-black/[0.1] border-[1px] rounded-md border-black/10 flex gap-[15px]"
     >
-      <div className="w-[30px] h-[30px] bg-black/10 rounded-full relative border-[0.1px] border-black/5">
+      <div className="w-[30px] justify-stretch h-[30px] bg-black/10 rounded-full relative border-[0.1px] border-black/5">
         <Image
           src={getCompanyLogo(job.company.url)}
           alt={job.company.name}

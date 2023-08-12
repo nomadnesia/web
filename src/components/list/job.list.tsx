@@ -4,7 +4,7 @@ import { useFilter } from '@/providers/filter-provider';
 import { useMode } from '@/providers/mode-provider';
 import { useSearchQuery } from '@/providers/search-provider';
 
-import { CafeItem } from './cafe.item';
+import CafeItem from './cafe.item';
 import { JobItem } from './job.item';
 import type { Job } from './list';
 import { Pill } from './pill';
