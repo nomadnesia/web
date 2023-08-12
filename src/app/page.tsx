@@ -1,6 +1,6 @@
 import { Switch } from '@/components/ui/switch';
 
-export default function Home() {
+export default async function Home() {
   return (
     <div>
       <Switch />
