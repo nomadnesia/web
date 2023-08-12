@@ -1,20 +1,33 @@
-import { Building, CircleDollarSign, MapPin, Plus, Star } from 'lucide-react';
+import {
+  Briefcase,
+  Building,
+  CircleDollarSign,
+  Coffee,
+  Filter,
+  MapPin,
+  Plus,
+  Star,
+} from 'lucide-react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { getCompanyLogo } from '@/lib/utils';
 import { useFilter } from '@/providers/filter-provider';
+import { useMode } from '@/providers/mode-provider';
 import { useSearchQuery } from '@/providers/search-provider';
 
+import { JobItem } from './job.item';
+import type { Job } from './list';
 import { Pill } from './pill';
 import { CAFES, JOBS } from './placholder';
 
 function JobList() {
   const { filter, onChangeFilter } = useFilter();
   const { searchQuery, setSearchQuery, onSearchQuery } = useSearchQuery();
+  const { setMode } = useMode();
 
-  const filteredJobs =
+  const filteredJobs: Job[] =
     searchQuery && searchQuery?.length > 0
       ? JOBS.filter((job) => {
           job.position.toLowerCase().includes(searchQuery.toLowerCase());
@@ -29,7 +42,11 @@ function JobList() {
   return (
     <div className="flex gap-[20px]">
       <div className="flex flex-col gap-[15px]">
-        <h4>Filter</h4>
+        <div className="flex gap-[8px] items-center">
+          <Filter size={14} />
+          <h4>Filter</h4>
+        </div>
+
         <div className="flex flex-col border-[1px] border-black/10 p-[10px] rounded-sm shadow-sm h-fit gap-[20px] w-[250px]">
           <div className="flex flex-col gap-[10px]">
             <p className="opacity-80 text-[14px] font-medium">Kategori</p>
@@ -59,11 +76,11 @@ function JobList() {
       </div>
       <div className="flex flex-col gap-[10px] w-full">
         <div className="flex items-center justify-between w-full">
-          <div className="flex gap-[5px] items-center">
+          <div className="flex gap-[8px] items-center">
+            <Briefcase size={14} />
             <h4>Pekerjaan</h4>
             <span className="opacity-50 text-[14px]">{filteredJobs.length}</span>
           </div>
-
           <button
             type="button"
             onClick={() => alert('Tambah job')}
@@ -74,49 +91,24 @@ function JobList() {
           </button>
         </div>
         <div className="flex flex-col gap-[10px]">
-          {filteredJobs.map((job) => (
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              href={job.url}
-              key={job.id}
-              className="p-[15px] group transition hover:bg-black/[0.03] hover:border-black/[0.1] border-[1px] rounded-md border-black/10 flex gap-[15px]"
-            >
-              <div className="w-[30px] h-[30px] bg-black/10 rounded-full relative border-[0.1px] border-black/5">
-                <Image
-                  src={getCompanyLogo(job.company.url)}
-                  alt={job.company.name}
-                  quality={100}
-                  width={30}
-                  height={30}
-                  className="rounded-full"
-                />
-              </div>
-              <div className="flex flex-col gap-[5px]">
-                <p className="text-[16px] font-medium">{job.position}</p>
-                <div className="flex gap-[5px] items-center opacity-50">
-                  <Building size={14} />
-                  <p className="text-[14px]">{job.company.name}</p>
-                </div>
-                <div className="flex gap-[5px] items-center opacity-50">
-                  <CircleDollarSign size={14} />
-                  <p className="text-[14px]">{job.salary}</p>
-                </div>
-                <div className="flex gap-[5px] items-center opacity-50">
-                  <MapPin size={14} />
-                  <p className="text-[14px]">{job.company.location}</p>
-                </div>
-              </div>
-              <p className="ml-auto text-[12px] group-hover:opacity-80 opacity-0 transition">↗</p>
-            </Link>
+          {filteredJobs.map((job, id) => (
+            <JobItem job={job} key={id} />
           ))}
         </div>
       </div>
       <div className="flex flex-col gap-[10px]">
-        <div className="flex gap-[5px] items-center">
+        <div className="flex gap-[8px] items-center">
+          <Coffee size={14} />
           <h4>Rekomendasi cafe</h4>
-          <span className="opacity-50 text-[14px]">{filteredJobs.length}</span>
+          <button
+            type="button"
+            onClick={(e) => setMode('cafe')}
+            className="text-[12px] opacity-50 hover:opacity-100 transition ml-auto"
+          >
+            Cari cafe →
+          </button>
         </div>
+
         <div className="flex flex-col gap-[10px] w-[250px]">
           {CAFES.map((cafe) => (
             <Link
