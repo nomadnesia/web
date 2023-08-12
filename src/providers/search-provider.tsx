@@ -31,7 +31,9 @@ function SearchQueryProvider({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState<string | null>(searchParams?.get('q'));
+  const [searchQuery, setSearchQuery] = useState<SearchQueryContext['searchQuery']>(
+    searchParams?.get('q'),
+  );
 
   const onSearchQuery = useCallback(
     (query: string) => {
