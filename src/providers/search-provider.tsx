@@ -38,7 +38,8 @@ function SearchQueryProvider({ children }: { children: React.ReactNode }) {
       setSearchQuery(query);
       const params = new URLSearchParams(searchParams.toString());
       params.set('q', query);
-      router.push(pathname + '?' + params);
+      // TODO: Why scroll back to the top?
+      router.replace(pathname + '?' + params, { scroll: false });
     },
     [searchParams, router, pathname],
   );

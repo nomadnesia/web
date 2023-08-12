@@ -33,7 +33,7 @@ function Header() {
       /* Enable cafe mode when true */
       if (checked) {
         params.set('cafe', 'true');
-        router.push(pathname + '?' + params);
+        router.push(pathname + '?' + params, { scroll: false });
         setMode('cafe');
         return;
       }
