@@ -20,3 +20,11 @@ export interface Job {
   url: string;
   category: JobCategory[];
 }
+
+export interface Cafe {
+  url: string;
+  name: string;
+  location: string;
+  rating: number;
+  image: string;
+}
