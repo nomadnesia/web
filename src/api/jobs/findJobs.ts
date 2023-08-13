@@ -23,8 +23,8 @@ const findJobs = async (params: Params): Promise<PostgrestSingleResponse<Job[]>>
    category:category_id (*)
   `,
     )
-    .like('name', `%${params.name}%`)
-    .like('company.name', `%${params.name}%`)
+    .like('name', `%${params.name ?? ''}%`)
+    .like('company.name', `%${params.company ?? ''}%`)
     .filter('category.name', 'eq', params.category)
     .range(params.from ?? 0, params.to ?? 10);
 
